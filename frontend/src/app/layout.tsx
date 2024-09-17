@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/globals.css";
-import Section from "@/components/Section";
 
 export const metadata: Metadata = {
   title: "Portfolio - JangMunYong",

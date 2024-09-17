@@ -1,4 +1,3 @@
-// src/app/page.tsx
 "use client";
 import { useEffect, useState } from "react";
 import { fetchData } from "../../api/testDataApi"; // 변경된 파일 경로를 사용합니다.

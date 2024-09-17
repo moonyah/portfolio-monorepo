@@ -27,12 +27,12 @@ const Header = ({ className }: HeaderProps) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-10 p-8 transition-colors duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-10 p-4 transition-colors duration-300 ${
         isHomePage
           ? scrolled
-            ? "bg-white bg-opacity-80 text-black" // 배경을 약간 불투명하게 설정
+            ? "bg-white text-black" // 배경을 약간 불투명하게 설정
             : "bg-transparent text-white"
-          : "bg-white bg-opacity-80 text-black" // 홈이 아닌 경우 고정된 스타일
+          : "bg-white text-black" // 홈이 아닌 경우 고정된 스타일
       } ${className}`}
     >
       <div className="container mx-auto h-16 flex items-center justify-between">

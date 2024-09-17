@@ -22,3 +22,23 @@
 .scrolled .icon {
   filter: hue-rotate(0deg) saturate(1) brightness(0.3) contrast(1.2); /* 스크롤 시 색상 변경 */
 }
+
+.slick-slide {
+  transition: transform 0.5s ease;
+}
+
+.slick-center .slick-slide {
+  @apply transform scale-110; /* 활성 슬라이드를 더 크게 보이도록 설정 */
+}
+
+.slick-slide:focus {
+  outline: none; /* 포커스 상태에서 outline 제거 */
+}
+
+/* .line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} */

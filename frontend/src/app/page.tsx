@@ -61,11 +61,7 @@ const Home: React.FC = () => {
         scrollToSection={scrollToSection}
       />
 
-      <Section
-        id="section1"
-        background="lightblue"
-        className="relative h-screen"
-      >
+      <Section id="section1" background="black" className="relative h-screen">
         <video
           src="/video.mp4"
           autoPlay
@@ -80,7 +76,7 @@ const Home: React.FC = () => {
 
       <Section
         id="section2"
-        background="linear-gradient(to bottom, #F2FE8A, white" // #D6F6A4 연초록
+        background="linear-gradient(to bottom, white, white" // #D6F6A4 연초록
       >
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div
@@ -94,9 +90,9 @@ const Home: React.FC = () => {
 
           <Link
             href="/resume"
-            className="absolute bottom-[200px] flex items-center justify-center px-6 py-3  text-gray-500 hover:text-black transition duration-300"
+            className="absolute bottom-[200px] flex items-center justify-center px-6 py-3 text-gray-500 hover:text-black transition duration-300"
           >
-            <Button onClick={() => scrollToSection(1)}>
+            <Button>
               <span>더보기</span>
               <span className="ml-2 transform translate-y-[-2px]">→</span>
             </Button>
