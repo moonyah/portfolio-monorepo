@@ -1,35 +1,39 @@
-"use client";
-import { easeInOutQuad } from "@/utils/easing";
-import { useEffect, useState } from "react";
+'use client';
+import { easeInOutQuad } from '@/utils/easing';
+import { useEffect, useState, useCallback } from 'react';
 
 const useSmoothScroll = () => {
   const [currentSection, setCurrentSection] = useState(0);
   const [scrolling, setScrolling] = useState(false);
   const [sectionHeight, setSectionHeight] = useState(window.innerHeight);
 
-  const smoothScrollTo = (targetSection: number) => {
-    const start = window.scrollY;
-    const end = targetSection * sectionHeight;
-    const duration = 1000; // 애니메이션 지속 시간 (ms)
-    const startTime = performance.now();
+  // Wrap the smoothScrollTo function in useCallback
+  const smoothScrollTo = useCallback(
+    (targetSection: number) => {
+      const start = window.scrollY;
+      const end = targetSection * sectionHeight;
+      const duration = 1000; // 애니메이션 지속 시간 (ms)
+      const startTime = performance.now();
 
-    const scrollStep = (currentTime: number) => {
-      const elapsedTime = currentTime - startTime;
-      const progress = Math.min(elapsedTime / duration, 1);
-      const scrollPosition = start + (end - start) * easeInOutQuad(progress);
+      const scrollStep = (currentTime: number) => {
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+        const scrollPosition = start + (end - start) * easeInOutQuad(progress);
 
-      window.scrollTo(0, scrollPosition);
+        window.scrollTo(0, scrollPosition);
 
-      if (progress < 1) {
-        requestAnimationFrame(scrollStep);
-      } else {
-        setScrolling(false);
-        setCurrentSection(targetSection);
-      }
-    };
+        if (progress < 1) {
+          requestAnimationFrame(scrollStep);
+        } else {
+          setScrolling(false);
+          setCurrentSection(targetSection);
+        }
+      };
 
-    requestAnimationFrame(scrollStep);
-  };
+      requestAnimationFrame(scrollStep);
+    },
+    [sectionHeight]
+  );
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
@@ -47,15 +51,15 @@ const useSmoothScroll = () => {
       }
     };
 
-    window.addEventListener("wheel", handleWheel);
+    window.addEventListener('wheel', handleWheel);
     const updateSectionHeight = () => setSectionHeight(window.innerHeight);
-    window.addEventListener("resize", updateSectionHeight);
+    window.addEventListener('resize', updateSectionHeight);
 
     return () => {
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("resize", updateSectionHeight);
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('resize', updateSectionHeight);
     };
-  }, [currentSection, scrolling, sectionHeight]);
+  }, [currentSection, scrolling, smoothScrollTo]);
 
   return {
     currentSection,

@@ -1,7 +1,6 @@
-import React from "react";
-import { projectDetails } from "@/data/projectDetails";
-import Link from "next/link";
-import { Project } from "@/types/project";
+import React from 'react';
+import Image from 'next/image'; // Import Image from next/image
+import { Project } from '@/types/project';
 
 interface ProjectDetailsProps {
   project: Project;
@@ -32,7 +31,7 @@ const ProjectDetails = ({ project }: ProjectDetailsProps) => {
           </h3>
           {project.technologies && (
             <p className="text-gray-500 text-lg">
-              {project.technologies.join(" + ")}
+              {project.technologies.join(' + ')}
             </p>
           )}
         </div>
@@ -62,10 +61,13 @@ const ProjectDetails = ({ project }: ProjectDetailsProps) => {
           {project.architectureImage && (
             <div className="mt-8 flex justify-center rounded-lg shadow-md">
               <div className="w-full max-w-4xl">
-                <img
+                <Image
                   src={project.architectureImage}
                   alt="Architecture"
-                  className="w-full h-auto max-w-full object-contain"
+                  layout="responsive"
+                  width={1200} // Adjust width according to your image dimensions
+                  height={800} // Adjust height according to your image dimensions
+                  className="object-contain"
                 />
               </div>
             </div>

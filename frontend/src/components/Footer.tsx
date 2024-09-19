@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const Footer = () => {
   return (
     <footer className="relative z-20 bg-black text-white text-center p-4">
@@ -21,14 +23,26 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="/icons/linkedin.svg" alt="LinkedIn" className="w-6 h-6" />
+            <Image
+              src="/icons/linkedin.svg"
+              alt="LinkedIn"
+              width={24}
+              height={24}
+              className="w-6 h-6"
+            />
           </a>
           <a
             href="https://github.com/moonyah"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="/icons/github.svg" alt="GitHub" className="w-6 h-6" />
+            <Image
+              src="/icons/github.svg"
+              alt="GitHub"
+              width={24}
+              height={24}
+              className="w-6 h-6"
+            />
           </a>
         </div>
         <div className="text-sm text-gray-400">

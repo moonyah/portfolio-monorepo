@@ -1,17 +1,43 @@
-declare module "@fullpage/react-fullpage" {
-  import { ComponentType } from "react";
+declare module '@fullpage/react-fullpage' {
+  import { ComponentType } from 'react';
 
-  export interface FullPageApi {
-    // 필요한 메소드 및 프로퍼티 정의 추가
+  // Define the structure of origin and destination
+  interface FullPageSection {
+    index: number;
+    anchor: string;
+    item: HTMLElement;
   }
 
-  export interface ReactFullpageProps {
+  interface FullPageApi {
+    // Define the methods you plan to use from the FullPage API
+    moveTo(section: string | number): void;
+    silentMoveTo(section: string | number): void;
+    setAllowScrolling(allow: boolean): void;
+    // Add other methods as needed
+  }
+
+  interface FullPageState {
+    // Define properties of state based on your usage
+    // For example:
+    // currentSlide: number;
+    // isScrolling: boolean;
+    // Add more properties as needed
+  }
+
+  interface ReactFullpageProps {
     sectionsColor?: string[];
     scrollingSpeed?: number;
     controlArrows?: boolean;
     navigation?: boolean;
-    onLeave?: (origin: any, destination: any, direction: string) => void;
-    render?: (props: { state: any; fullpageApi: FullPageApi }) => JSX.Element;
+    onLeave?: (
+      origin: FullPageSection,
+      destination: FullPageSection,
+      direction: string
+    ) => void;
+    render?: (props: {
+      state: FullPageState;
+      fullpageApi: FullPageApi;
+    }) => JSX.Element;
   }
 
   const ReactFullpage: ComponentType<ReactFullpageProps>;

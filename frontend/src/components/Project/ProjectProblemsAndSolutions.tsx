@@ -1,7 +1,6 @@
-import React from "react";
-import { projectDetails } from "@/data/projectDetails";
-import Link from "next/link";
-import { Project } from "@/types/project";
+import React from 'react';
+import Link from 'next/link';
+import { Project } from '@/types/project';
 
 interface ProjectProblemsAndSolutionsProps {
   project: Project;

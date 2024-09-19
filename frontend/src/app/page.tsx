@@ -1,45 +1,49 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import Section from "../components/Section"; // Section 컴포넌트 경로 확인
-import ScrollIndicator from "../components/ScrollIndicator";
-import useSmoothScroll from "use-scroll-animation"; // useSmoothScroll 훅
-import Link from "next/link";
-import Button from "@/components/Button";
-import SectionLinks from "@/components/LinkCards";
+'use client';
+import React, { useState, useEffect, useRef } from 'react';
+import Section from '../components/Section'; // Section 컴포넌트 경로 확인
+import ScrollIndicator from '../components/ScrollIndicator';
+import useSmoothScroll from 'use-scroll-animation'; // useSmoothScroll 훅
+import Link from 'next/link';
+import Button from '@/components/Button';
+import SectionLinks from '@/components/LinkCards';
 
 const Home: React.FC = () => {
   const { currentSection, scrollToSection } = useSmoothScroll();
   const content = "Hi. I'm Munyong, \n front-end developer.";
-  const [displayedText, setDisplayedText] = useState("");
+  const [displayedText, setDisplayedText] = useState('');
   const [hasAnimated, setHasAnimated] = useState(false); // 애니메이션 여부 상태
-  let i = 0;
-  let typingInterval: NodeJS.Timeout | null = null;
+
+  // useRef를 사용하여 i와 typingInterval을 관리
+  const iRef = useRef(0);
+  const typingIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     function typing() {
+      const i = iRef.current;
       if (i < content.length) {
-        let txt = content[i++];
-        setDisplayedText((prev) => prev + (txt === "\n" ? "<br/>" : txt));
+        const txt = content[i];
+        setDisplayedText((prev) => prev + (txt === '\n' ? '<br/>' : txt));
+        iRef.current++;
       } else {
-        clearInterval(typingInterval!);
+        clearInterval(typingIntervalRef.current!);
         setTimeout(() => {
-          setDisplayedText("");
-          i = 0;
-          typingInterval = setInterval(typing, 200);
+          setDisplayedText('');
+          iRef.current = 0;
+          typingIntervalRef.current = setInterval(typing, 200);
         }, 2000);
       }
     }
 
-    typingInterval = setInterval(typing, 200);
+    typingIntervalRef.current = setInterval(typing, 200);
 
     return () => {
-      if (typingInterval) clearInterval(typingInterval);
+      if (typingIntervalRef.current) clearInterval(typingIntervalRef.current);
     };
   }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      const section3 = document.getElementById("section3");
+      const section3 = document.getElementById('section3');
       if (section3) {
         const rect = section3.getBoundingClientRect();
         if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
@@ -48,9 +52,9 @@ const Home: React.FC = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -82,8 +86,8 @@ const Home: React.FC = () => {
           <div
             className="font-pixel text-center text-5xl md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-gray-700 via-gray-900 to-black"
             style={{
-              lineHeight: "1.3",
-              overflow: "visible",
+              lineHeight: '1.3',
+              overflow: 'visible',
             }}
             dangerouslySetInnerHTML={{ __html: displayedText }}
           ></div>

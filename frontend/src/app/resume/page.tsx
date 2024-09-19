@@ -1,7 +1,6 @@
-"use client";
-import Header from "@/components/Header";
-import useScrollToTop from "@/hooks/useScrollToTop";
-import { useEffect } from "react";
+'use client';
+import Header from '@/components/Header';
+import { useEffect } from 'react';
 
 export default function Resume() {
   useEffect(() => {
@@ -44,9 +43,9 @@ export default function Resume() {
               </a>
             </p>
             <p>
-              "저는 꾸준함이 무기인 신입 프론트엔드 개발자입니다. 함께 일하는
-              것을 즐기며 스스로 부족함을 극복하고 성장하려는 열정을 가지고
-              있습니다."
+              &ldquo;저는 꾸준함이 무기인 신입 프론트엔드 개발자입니다. 함께
+              일하는 것을 즐기며 스스로 부족함을 극복하고 성장하려는 열정을
+              가지고 있습니다.&rdquo;
             </p>
           </div>
         </section>
@@ -125,15 +124,15 @@ export default function Resume() {
             <hr className="border-t-4 border-gray-300 hidden lg:flex pb-2" />
             <div>
               <p>
-                <span className="text-black font-semibold">React</span> /{" "}
-                <span className="text-black font-semibold">TypeScript</span> /{" "}
-                <span className="text-black font-semibold">Next.js</span> /{" "}
-                <span className="text-black font-semibold">JavaScript</span> /{" "}
-                <span className="text-gray-600">Recoil</span> /{" "}
-                <span className="text-gray-600">HTML</span> /{" "}
-                <span className="text-gray-600">CSS</span> /{" "}
-                <span className="text-gray-600">Tailwind CSS</span> /{" "}
-                <span className="text-gray-600">Styled-component</span> /{" "}
+                <span className="text-black font-semibold">React</span> /{' '}
+                <span className="text-black font-semibold">TypeScript</span> /{' '}
+                <span className="text-black font-semibold">Next.js</span> /{' '}
+                <span className="text-black font-semibold">JavaScript</span> /{' '}
+                <span className="text-gray-600">Recoil</span> /{' '}
+                <span className="text-gray-600">HTML</span> /{' '}
+                <span className="text-gray-600">CSS</span> /{' '}
+                <span className="text-gray-600">Tailwind CSS</span> /{' '}
+                <span className="text-gray-600">Styled-component</span> /{' '}
                 <span className="text-gray-600">Firebase</span>
               </p>
             </div>
