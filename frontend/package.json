@@ -24,7 +24,7 @@
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.1.12",
-    "use-scroll-animation": "^1.0.3",
+    "use-scroll-animation": "^1.0.9",
     "zod": "^3.23.8"
   },
   "devDependencies": {
